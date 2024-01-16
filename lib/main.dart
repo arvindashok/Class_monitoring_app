@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 // ignore_for_file: camel_case_types
 
-import 'package:flutter/material.dart';
 import 'Components.dart';
 
 void main() {
@@ -53,7 +52,7 @@ class DeanEdit extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF29327E), // Hex color value
+        backgroundColor: const Color.fromARGB(255, 255, 10, 144), // Hex color value
         title: const Row(
           children: [
             // Icon to the left of the text
@@ -62,7 +61,7 @@ class DeanEdit extends StatelessWidget {
               color: Colors.white, // Icon color
             ),
             SizedBox(width: 8), // Adding some spacing between icon and text
-            // Text "Monitor BMSCE" with specified style
+            // Text "Monitor BMSCE with specified style"
             Text(
               'Monitor BMSCE',
               style: TextStyle(
@@ -78,16 +77,24 @@ class DeanEdit extends StatelessWidget {
         children: [
           Frame(),
           Center(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    boxButton(text: "Faculty List"),
-                    SizedBox(height: 20),
-                    boxButton(text: "Team List"),
-                    SizedBox(height: 20),
-                    boxButtonTT(text: "Time Tables")
-                  ])),
+              child: Expanded(child:SingleChildScrollView(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        boxButton(text: "8:55AM - 9:50AM"),
+                        SizedBox(height: 20),
+                        boxButton(text: "9:50AM - 10:45AM"),
+                        SizedBox(height: 20),
+                        boxButton(text: "11:15AM - 12:10PM"),
+                        SizedBox(height: 20),
+                        boxButton(text: "12:10PM - 1:05AM"),
+                        SizedBox(height: 20),
+                        boxButton(text: "2:00PM - 2:55PM"),
+                        SizedBox(height: 20),
+                        boxButton(text: "2:55PM - 3:50PM"),
+                        SizedBox(height: 20),
+                      ])))),
         ],
       ),
       bottomNavigationBar: const navBarDean(),

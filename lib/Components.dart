@@ -10,10 +10,10 @@ class Frame extends StatelessWidget {
     return Container(
         decoration: const BoxDecoration(
             gradient: LinearGradient(
-      colors: [Color(0xFF008F98), Color(0xFF4CAF50)],
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-    )));
+              colors: [Color.fromARGB(255, 21, 10, 144), Color.fromARGB(255, 21, 10, 144)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            )));
   }
 }
 
@@ -44,13 +44,13 @@ class boxButton extends StatelessWidget {
           ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color.fromARGB(255, 79, 165, 82),
+              backgroundColor: const Color.fromARGB(255, 0, 0, 0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
             child: const Text(
-              "Upload",
+              "View",
               style: TextStyle(color: Colors.white),
             ),
           ),
@@ -105,7 +105,7 @@ class boxButtonTT extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 79, 165, 82),
+                  backgroundColor: const Color.fromARGB(255, 21, 10, 144),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -161,3 +161,5 @@ class navStateDean extends State<navBarDean> {
         ));
   }
 }
+
+
