@@ -1,41 +1,81 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Scaffold(
-        body: FigmaFlutterGeneratorIphone1415promax9Widget(),
+        body: YesNoWidget(),
       ),
     );
   }
 }
 
-class FigmaFlutterGeneratorIphone1415promax9Widget extends StatelessWidget {
+class YesNoWidget extends StatefulWidget {
+  const YesNoWidget({Key? key})
+      : super(key: key);
+
+  @override
+  _YesNoWidgetState createState() =>
+      _YesNoWidgetState();
+}
+
+class _YesNoWidgetState
+    extends State<YesNoWidget> {
+  String? _selectedTime;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white, // Darker background color
-      padding: EdgeInsets.all(20),
+      color: Colors.white,
+      padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Center the logo at the top
           Center(
-            child: Container(
-              margin: EdgeInsets.only(top:40 ,bottom: 40), // Adjusted margin
-
-              child: Image.asset(
-                'images/logo_bms2.jpg',
-                height: 150, // Adjust the height as needed
-              ),
+            child: Column(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 40, bottom: 40),
+                  child: Image.asset(
+                    'images/logo_bms2.jpg',
+                    height: 150,
+                  ),
+                ),
+                // Add dropdown menu
+                DropdownButton<String>(
+                  value: _selectedTime,
+                  items:
+                      <String>[
+                        '8:55AM - 9:50AM',
+                        '9:50AM - 10:45AM',
+                        '11:15AM - 12:10PM',
+                        '12:10PM - 1:05AM',
+                        '2:00PM - 2:55PM',
+                        '2:55PM - 3:50PM'].map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: _handleTimeChange,
+                  hint: Text('Select Time'),
+                ),
+                // Display selected Time
+                if (_selectedTime != null)
+                  Text('Selected Time: $_selectedTime'),
+              ],
             ),
           ),
           // White boxes
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -43,23 +83,7 @@ class FigmaFlutterGeneratorIphone1415promax9Widget extends StatelessWidget {
               WhiteBoxWidget(),
             ],
           ),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              WhiteBoxWidget(),
-              WhiteBoxWidget(),
-            ],
-          ),
-          SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              WhiteBoxWidget(),
-              WhiteBoxWidget(),
-            ],
-          ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -71,9 +95,18 @@ class FigmaFlutterGeneratorIphone1415promax9Widget extends StatelessWidget {
       ),
     );
   }
+
+  void _handleTimeChange(String? newValue) {
+    setState(() {
+      _selectedTime = newValue;
+    });
+    // Handle dropdown value change
+  }
 }
 
 class WhiteBoxWidget extends StatefulWidget {
+  const WhiteBoxWidget({Key? key}) : super(key: key);
+
   @override
   _WhiteBoxWidgetState createState() => _WhiteBoxWidgetState();
 }
@@ -86,38 +119,38 @@ class _WhiteBoxWidgetState extends State<WhiteBoxWidget> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: Colors.white, // Darker box background color
+        color: Colors.white,
         border: Border.all(
-          color: Colors.grey[800]!, // Darker border color
+          color: Colors.grey[800]!,
           width: 2,
         ),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.7),
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
             blurRadius: 8,
           ),
         ],
       ),
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       height: 120,
       width: 150,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          SizedBox(
+          const SizedBox(
             height: 30,
             child: Text(
               'Class Room-<>',
               style: TextStyle(
-                color: Colors.black, // White text color
+                color: Colors.black,
                 fontFamily: 'Montserrat',
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           ToggleButtons(
             isSelected: [_selectedIndex == 0, _selectedIndex == 1],
             onPressed: (int index) {
@@ -126,13 +159,13 @@ class _WhiteBoxWidgetState extends State<WhiteBoxWidget> {
               });
             },
             borderRadius: BorderRadius.circular(8),
-            selectedBorderColor: Colors.white, // White outline color
-            selectedColor: Colors.white, // Black text color for selected
-            fillColor: Colors.black, // Black background color for selected
-            color: Colors.black, // White text color for not selected
-            children: [
+            selectedBorderColor: Colors.white,
+            selectedColor: Colors.white,
+            fillColor: Colors.black,
+            color: Colors.black,
+            children: const [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text(
                   'Yes',
                   style: TextStyle(
@@ -143,7 +176,7 @@ class _WhiteBoxWidgetState extends State<WhiteBoxWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text(
                   'No',
                   style: TextStyle(
